@@ -24,3 +24,7 @@ print("New lines can be created with a backslash and n.")
 print("\n")
 
 print("Hello " + input("What is your name? "))
+
+print("\n")
+
+# To comment-out shortcut "ctrl+/"
