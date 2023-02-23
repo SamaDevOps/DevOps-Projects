@@ -1,0 +1,30 @@
+node {
+    def app
+
+    stage('Clone repo') {
+        checkout scm
+    }
+
+    stage('Build Image') {
+        sleep(3)
+        echo "build url is ${BUILD_URL}"
+        app = docker.build("samadhi995/jenkinspipeline", "-f Jenkins/saha-rajdeep-lab1/pipeline-code/Dockerfile .")
+    }
+
+    stage('Test Image') {
+        app.inside {
+            sh 'echo "Tests passed"'
+        }
+    }
+
+    stage('Push Image') {
+        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+            app.push("${env.BUILD_NUMBER}")
+        }       
+    }
+
+    stage('Trigger Manifest Update') {
+        echo "triggering update manifest job"
+        build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
+    }
+}

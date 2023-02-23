@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: pythondemo
+  name: pythondemo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: pythondemo
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: pythondemo
+    spec:
+      containers:
+      - image: samadhi995/jenkinspipeline:15
+        name: pythondemo
+        #command: ["/bin/sh", "-c", "sleep 1000"]
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: pythondemo
+  name: pythondemo
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: pythondemo
