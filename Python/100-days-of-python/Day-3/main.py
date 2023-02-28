@@ -2,20 +2,32 @@
 print("Welcome to RollerCoaster ride!")
 
 height = int(input("Please enter your height in cm : "))
+bill = 0
 
 if height > 120:
     print("You are good to go")
     age_check = int(input("Please enter your age: "))
     if age_check < 12:
-        print("please pay 5 dollers")
+        bill = 5
+        print("child ticket is 5 dollers")
     elif 12 <= age_check <= 18:
-        print("please pay 10 dollers")
+        bill = 10
+        print("youth ticket is 10 dollers")
     elif age_check > 18:
-        print("please pay 15 dollers")
+        bill = 15
+        print("adult ticket is 15 dollers")
+    
+    want_a_photo = input("Please Enter 'Y' if you want a photo or 'N' to No : ")
+    if want_a_photo == "Y":
+        bill += 3
+    
+    print(f"Your total bill is {bill}")
+    
 else:
     print("Not tall enough")
     
 print("\n------------------------\n")
+
 # Odd or even
 
 print("Odd or Even Number Checker")
