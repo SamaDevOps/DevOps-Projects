@@ -19,10 +19,11 @@ e_count = int(two_names.count("e"))
 
 second_digit = l_count + o_count + v_count + e_count
 love_number = str(first_digit) + str(second_digit)
+int_love_number = int(love_number)
 
-if love_number < "10" or love_number > "90":
+if int_love_number < 10 or int_love_number > 90:
     print(f"Your score is {love_number}, you go together like coke and mentos.")
-elif love_number < "50" and love_number > "40":
+elif int_love_number <= 50 and int_love_number >= 40:
     print(f"Your score is {love_number}, you are alright together.")
 else:
     print(f"Your score is {love_number}")
