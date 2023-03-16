@@ -1,3 +1,5 @@
+from art import logo
+
 answer = 0
 conti = "y"
 continued = False
@@ -17,7 +19,7 @@ def multi_op(first_number,second_number):
 def division_op(first_number,second_number):
     answer = first_number / second_number
     return answer
-
+print(logo)
 first_number = int(input("What's the first number? : "))
 
 while conti == "y":
