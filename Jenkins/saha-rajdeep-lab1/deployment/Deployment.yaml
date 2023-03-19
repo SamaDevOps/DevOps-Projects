@@ -18,7 +18,7 @@ spec:
         app: pythondemo
     spec:
       containers:
-      - image: samadhi995/jenkinspipeline:15
+      - image: samadhi995/jenkinspipeline:23
         name: pythondemo
         #command: ["/bin/sh", "-c", "sleep 1000"]
         resources: {}
